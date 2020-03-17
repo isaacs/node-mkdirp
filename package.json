@@ -1,7 +1,7 @@
 {
   "name": "mkdirp",
   "description": "Recursively mkdir, like `mkdir -p`",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "publishConfig": {
     "tag": "legacy"
   },
