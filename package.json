@@ -26,5 +26,9 @@
     "tap": "^5.4.2"
   },
   "bin": "bin/cmd.js",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "bin",
+    "index.js"
+  ]
 }
