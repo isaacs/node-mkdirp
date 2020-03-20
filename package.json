@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "require-inject": "^1.4.4",
-    "tap": "^14.10.6"
+    "tap": "^14.10.7"
   },
   "bin": "bin/cmd.js",
   "license": "MIT",
