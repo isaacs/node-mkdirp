@@ -255,9 +255,8 @@ to run the command without installing it globally.
 
 # platform support
 
-This module works on node v8, but only v10 and above are officially
-supported, as Node v8 reached its LTS end of life 2020-01-01, which is in
-the past, as of this writing.
+Only v10 and above are officially supported, as Node v8 reached its LTS
+end of life 2020-01-01, which is in the past, as of this writing.
 
 # license
 
