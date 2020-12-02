@@ -31,9 +31,7 @@
     "require-inject": "^1.4.4",
     "tap": "^14.10.7"
   },
-  "bin": {
-    "mkdirp": "bin/cmd.js"
-  },
+  "bin": "bin/cmd.js",
   "license": "MIT",
   "engines": {
     "node": ">=10"
