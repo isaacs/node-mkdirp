@@ -40,5 +40,8 @@
     "bin",
     "lib",
     "index.js"
-  ]
+  ],
+  "dependencies": {
+    "util.promisify": "^1.0.1"
+  }
 }

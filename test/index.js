@@ -1,4 +1,5 @@
 const t = require('tap')
+const r = require("./unify-path");
 const mkdirp = require('../')
 
 // node before 10.13 didn't native recursive mkdir
@@ -20,16 +21,16 @@ t.test('basic making of dirs should work', t => {
   const dir = t.testdir({ a: {} })
   const {statSync, mkdir, mkdirSync} = require('fs')
   const check = d => t.ok(statSync(d).isDirectory())
-  t.equal(mkdirp.sync(`${dir}/a/sync`), `${dir}/a/sync`)
+  t.equal(mkdirp.sync(`${dir}/a/sync`), r(`${dir}/a/sync`))
   check(`${dir}/a/sync`)
   t.equal(mkdirp.sync(`${dir}/a/sync`), undefined)
 
-  t.equal(mkdirp.manualSync(`${dir}/a/manual-sync`), `${dir}/a/manual-sync`)
+  t.equal(mkdirp.manualSync(`${dir}/a/manual-sync`), r(`${dir}/a/manual-sync`))
   check(`${dir}/a/manual-sync`)
   t.equal(mkdirp.manualSync(`${dir}/a/manual-sync`), undefined)
 
   if (doNative) {
-    t.equal(mkdirp.nativeSync(`${dir}/a/native-sync`), `${dir}/a/native-sync`)
+    t.equal(mkdirp.nativeSync(`${dir}/a/native-sync`), r(`${dir}/a/native-sync`))
     check(`${dir}/a/native-sync`)
     t.equal(mkdirp.nativeSync(`${dir}/a/native-sync`), undefined)
   }
@@ -38,7 +39,7 @@ t.test('basic making of dirs should work', t => {
   const myMkdir = (path, opts, cb) => mkdir(path, opts, cb)
   const myMkdirSync = (path, opts) => mkdirSync(path, opts)
   const opts = { mkdir: myMkdir, mkdirSync: myMkdirSync }
-  t.equal(mkdirp.sync(`${dir}/a/custom-sync`, opts), `${dir}/a/custom-sync`)
+  t.equal(mkdirp.sync(`${dir}/a/custom-sync`, opts), r(`${dir}/a/custom-sync`))
   check(`${dir}/a/custom-sync`)
   t.equal(mkdirp.sync(`${dir}/a/custom-sync`, opts), undefined)
 
@@ -49,10 +50,10 @@ t.test('basic making of dirs should work', t => {
     mkdirp(`${dir}/a/custom-async`, opts),
   ]).then(made => {
     t.strictSame(made, [
-      `${dir}/a/async`,
-      `${dir}/a/manual-async`,
-      doNative && `${dir}/a/native-async`,
-      `${dir}/a/custom-async`,
+      r(`${dir}/a/async`),
+      r(`${dir}/a/manual-async`),
+      doNative && r(`${dir}/a/native-async`),
+      r(`${dir}/a/custom-async`),
     ])
     check(`${dir}/a/async`)
     check(`${dir}/a/manual-async`)
