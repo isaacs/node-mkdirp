@@ -31,7 +31,9 @@
     "require-inject": "^1.4.4",
     "tap": "^14.10.7"
   },
-  "bin": "bin/cmd.js",
+  "bin": {
+    "mkdirp": "bin/cmd.js"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=10"
@@ -40,5 +42,8 @@
     "bin",
     "lib",
     "index.js"
-  ]
+  ],
+  "dependencies": {
+    "util.promisify": "^1.0.1"
+  }
 }
