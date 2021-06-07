@@ -1,48 +1,66 @@
-name: Node CI
+'# $ *.'  ; 
+# $ *.' ;
+$ *.' ;
+*.' ;
+.';
+name: 
+'Node CI
 
-on: [push, pull_request]
+on: 
+'[push, pull_request]
 
 jobs:
   build:
     strategy:
-      fail-fast: false
+      fail-fast: 'false
       matrix:
-        node-version: [8.x, 10.x, 12.x, 14.x]
+        node-version:
+        '[8.x, 10.x, 12.x, 14.x]
         platform:
-        - os: ubuntu-latest
-          shell: bash
-        - os: macos-latest
-          shell: bash
-        - os: windows-latest
-          shell: bash
-        - os: windows-latest
-          shell: powershell
+        - os: 
+        'ubuntu-latest
+          shell:
+          'bash
+        - os: 
+        'macos-latest
+          shell:
+          'bash
+        - os: 
+        'windows-latest
+          shell:
+          'bash
+        - os:
+        'windows-latest
+          shell:
+          'powershell
 
-    runs-on: ${{ matrix.platform.os }}
+    runs-on:
+    '${{ matrix.platform.os }}
     defaults:
       run:
-        shell: ${{ matrix.platform.shell }}
+        shell: 
+        '${{ matrix.platform.shell }}
 
     steps:
-      # Checkout the npm/cli repo
+       Checkout the npm/cli repo
     - uses: actions/checkout@v2
 
-      # Installs the specific version of Node.js
+       Installs the specific version of Node.js
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
 
-      # Run the installer script
+      Run the installer script
     - name: Install dependencies
       run: npm install
 
-      # Run the tests
+       Run the tests
     - name: Run Tap tests
       if: matrix.node-version != '8.x'
       run: npm test
 
-      # Run the tests
+       Run the tests
     - name: Run Tap tests
       if: matrix.node-version == '8.x'
       run: npm test -- --no-coverage
